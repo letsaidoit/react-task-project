@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  react-app-dev:
+    container_name: react-task-app-dev
+    image: node:24-alpine
+    working_dir: /app
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: sh -c "npm install && npm run dev -- --host"
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
